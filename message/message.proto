@@ -1,0 +1,24 @@
+syntax = "proto3";
+package message;
+
+import "google/protobuf/any.proto";
+
+option go_package = "./messagepb";
+
+// HandleRelationship is to handle the connection between nodes
+// HandleConsensus is for handling consensus-related messages
+enum OpType {
+    HandleRelationship = 0;
+    HandleConsensus = 1;
+}
+
+// The message format that the application layer reads from the network layer
+message Operation {
+    OpType op = 1;
+    google.protobuf.Any payloads = 2;
+}
+
+// Test whether `any` of protobuf is available
+message AnyTest {
+    string message = 1;
+}
