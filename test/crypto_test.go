@@ -28,9 +28,9 @@ func TestTBLSWith4Nodes(t *testing.T) {
 	honest2 := players[2]
 	share1 := honest1.ComputeShare(msg)
 	share2 := honest2.ComputeShare(msg)
-	shares := make([][]byte, 0)
-	shares = append(shares, share1)
-	shares = append(shares, share2)
+	shares := make([][]byte, 2)
+	shares[0] = share1
+	shares[1] = share2
 	signature := players[3].Combine(msg, shares)
 	assert.NotNil(t, signature)
 	assert.Equal(t, true, players[3].VerifySignature(msg, signature))
