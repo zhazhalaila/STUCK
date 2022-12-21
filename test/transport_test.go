@@ -9,6 +9,8 @@ import (
 	"github.com/stuck/transport/local"
 )
 
+var _ transport.Transport = (*local.LocalTransport)(nil)
+
 func initLocalTransports(n int) map[int]transport.Transport {
 	// create two maps, one for return and the other for assignment
 	peersReturn := make(map[int]transport.Transport, n)
